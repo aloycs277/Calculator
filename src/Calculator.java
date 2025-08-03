@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,11 +32,10 @@ public class Calculator {
 		JButton b9 = new JButton("9");
 		JButton b0 = new JButton("0");
 		JButton add = new JButton("+");
-		JButton minus = new JButton("-");
-		JButton mul = new JButton("*");
-		JButton div = new JButton("/");
+		JButton minus = new JButton("–");
+		JButton mul = new JButton("×");
+		JButton div = new JButton("÷");
 		JButton dot = new JButton(".");
-
 		JButton eql = new JButton("=");
 		JButton back = new JButton("⌫");
 		JButton clr = new JButton("C");
@@ -77,6 +77,33 @@ public class Calculator {
 		frame.add(clr);
 		frame.add(div);
 		frame.add(eql);
+
+		b1.setBackground(Color.WHITE);
+		b2.setBackground(Color.WHITE);
+		b3.setBackground(Color.WHITE);
+		b4.setBackground(Color.WHITE);
+		b5.setBackground(Color.WHITE);
+		b6.setBackground(Color.WHITE);
+		b7.setBackground(Color.WHITE);
+		b8.setBackground(Color.WHITE);
+		b9.setBackground(Color.WHITE);
+		b0.setBackground(Color.WHITE);
+		add.setBackground(new Color(0, 80, 230));
+		add.setForeground(Color.WHITE);
+		minus.setBackground(new Color(0, 80, 230));
+		minus.setForeground(Color.WHITE);
+		div.setBackground(new Color(0, 80, 230));
+		div.setForeground(Color.WHITE);
+		mul.setBackground(new Color(0, 80, 230));
+		mul.setForeground(Color.WHITE);
+		dot.setBackground(new Color(0, 80, 230));
+		dot.setForeground(Color.WHITE);
+		eql.setBackground(new Color(0, 80, 230));
+		eql.setForeground(Color.WHITE);
+		back.setBackground(new Color(255, 70, 50));
+		back.setForeground(Color.WHITE);
+		clr.setBackground(new Color(255, 70, 50));
+		clr.setForeground(Color.WHITE);
 
 		ActionListener numAction = e -> {
 			JButton btn = (JButton) e.getSource();
@@ -143,7 +170,11 @@ public class Calculator {
 				break;
 			}
 
-			t1.setText(String.valueOf(result));
+			if (result == Math.floor(result)) {
+				t1.setText(String.valueOf((long) result));
+			} else {
+				t1.setText(String.valueOf(result));
+			}
 		});
 		back.addActionListener(e -> {
 			String text = t1.getText();
@@ -154,7 +185,7 @@ public class Calculator {
 
 		clr.addActionListener(e -> t1.setText(""));
 		frame.setVisible(true);
-
+		frame.getContentPane().setBackground(new Color(135, 206, 235));
 	}
 
 }
