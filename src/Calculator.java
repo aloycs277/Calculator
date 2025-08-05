@@ -3,18 +3,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 public class Calculator {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Calculator");
-		frame.setSize(305, 400);
+		frame.setSize(385, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setLayout(null);
 
 		JTextField t1 = new JTextField();
-		t1.setBounds(30, 40, 230, 50);
+		t1.setBounds(40, 40, 290, 50);
 		t1.setEditable(false);
 		frame.add(t1);
 
@@ -32,32 +33,70 @@ public class Calculator {
 		JButton b9 = new JButton("9");
 		JButton b0 = new JButton("0");
 		JButton add = new JButton("+");
-		JButton minus = new JButton("–");
-		JButton mul = new JButton("×");
-		JButton div = new JButton("÷");
+		JButton minus = new JButton("-");
+		JButton mul = new JButton("*");
+		JButton div = new JButton("/");
 		JButton dot = new JButton(".");
+		JButton sign = new JButton("±");
 		JButton eql = new JButton("=");
 		JButton back = new JButton("⌫");
 		JButton clr = new JButton("C");
+		JToggleButton a = new JToggleButton("↑");
+		JButton sqrt = new JButton("√");
+		JButton square = new JButton("x²");
+		JButton sin = new JButton("sin");
+		JButton cos = new JButton("cos");
+		JButton tan = new JButton("tan");
+		JButton asin = new JButton("sin⁻¹");
+		JButton acos = new JButton("cos⁻¹");
+		JButton atan = new JButton("tan⁻¹");
 
-		b1.setBounds(30, 100, 50, 40);
-		b2.setBounds(90, 100, 50, 40);
-		b3.setBounds(150, 100, 50, 40);
-		add.setBounds(210, 100, 50, 40);
-		b4.setBounds(30, 150, 50, 40);
-		b5.setBounds(90, 150, 50, 40);
-		b6.setBounds(150, 150, 50, 40);
-		minus.setBounds(210, 150, 50, 40);
-		b7.setBounds(30, 200, 50, 40);
-		b8.setBounds(90, 200, 50, 40);
-		b9.setBounds(150, 200, 50, 40);
-		mul.setBounds(210, 200, 50, 40);
-		dot.setBounds(30, 250, 50, 40);
-		b0.setBounds(90, 250, 50, 40);
-		back.setBounds(150, 250, 50, 40);
-		div.setBounds(210, 250, 50, 40);
-		clr.setBounds(150, 300, 50, 40);
-		eql.setBounds(90, 300, 50, 40);
+		JButton log = new JButton("log");
+		JButton ln = new JButton("ln");
+
+		JButton mod = new JButton("%");
+		JButton pow = new JButton("^");
+		JButton fact = new JButton("!");
+
+		JButton pi = new JButton("π");
+		JButton res = new JButton("x⁻¹");
+
+		b1.setBounds(40, 100, 50, 40);
+		b2.setBounds(100, 100, 50, 40);
+		b3.setBounds(160, 100, 50, 40);
+		add.setBounds(220, 100, 50, 40);
+		sign.setBounds(280, 100, 50, 40);
+		b4.setBounds(40, 150, 50, 40);
+		b5.setBounds(100, 150, 50, 40);
+		b6.setBounds(160, 150, 50, 40);
+		minus.setBounds(220, 150, 50, 40);
+		back.setBounds(280, 150, 50, 40);
+		b7.setBounds(40, 200, 50, 40);
+		b8.setBounds(100, 200, 50, 40);
+		b9.setBounds(160, 200, 50, 40);
+		mul.setBounds(220, 200, 50, 40);
+		clr.setBounds(280, 200, 50, 40);
+		dot.setBounds(40, 250, 50, 40);
+		b0.setBounds(100, 250, 50, 40);
+		eql.setBounds(160, 250, 50, 40);
+		div.setBounds(220, 250, 50, 40);
+		a.setBounds(280, 250, 50, 40);
+
+		sqrt.setBounds(20, 300, 64, 40);
+		square.setBounds(87, 300, 64, 40);
+		log.setBounds(154, 300, 64, 40);
+		ln.setBounds(221, 300, 64, 40);
+		mod.setBounds(288, 300, 64, 40);
+		sin.setBounds(20, 350, 64, 40);
+		cos.setBounds(87, 350, 64, 40);
+		tan.setBounds(154, 350, 64, 40);
+		pow.setBounds(221, 350, 64, 40);
+		fact.setBounds(288, 350, 64, 40);
+		asin.setBounds(20, 400, 64, 40);
+		acos.setBounds(87, 400, 64, 40);
+		atan.setBounds(154, 400, 64, 40);
+		pi.setBounds(221, 400, 64, 40);
+		res.setBounds(288, 400, 64, 40);
 
 		frame.add(b1);
 		frame.add(b2);
@@ -76,7 +115,24 @@ public class Calculator {
 		frame.add(back);
 		frame.add(clr);
 		frame.add(div);
+		frame.add(sign);
 		frame.add(eql);
+		frame.add(a);
+		frame.add(sqrt);
+		frame.add(square);
+		frame.add(log);
+		frame.add(ln);
+		frame.add(mod);
+		frame.add(sin);
+		frame.add(cos);
+		frame.add(tan);
+		frame.add(pow);
+		frame.add(asin);
+		frame.add(acos);
+		frame.add(atan);
+		frame.add(pi);
+		frame.add(res);
+		frame.add(fact);
 
 		b1.setBackground(Color.WHITE);
 		b2.setBackground(Color.WHITE);
@@ -88,22 +144,26 @@ public class Calculator {
 		b8.setBackground(Color.WHITE);
 		b9.setBackground(Color.WHITE);
 		b0.setBackground(Color.WHITE);
-		add.setBackground(new Color(0, 80, 230));
+
+		add.setBackground(new Color(0, 120, 230));
 		add.setForeground(Color.WHITE);
-		minus.setBackground(new Color(0, 80, 230));
+		minus.setBackground(new Color(0, 120, 230));
 		minus.setForeground(Color.WHITE);
-		div.setBackground(new Color(0, 80, 230));
+		div.setBackground(new Color(0, 120, 230));
 		div.setForeground(Color.WHITE);
-		mul.setBackground(new Color(0, 80, 230));
+		mul.setBackground(new Color(0, 120, 230));
 		mul.setForeground(Color.WHITE);
-		dot.setBackground(new Color(0, 80, 230));
+		dot.setBackground(new Color(0, 120, 230));
 		dot.setForeground(Color.WHITE);
-		eql.setBackground(new Color(0, 80, 230));
+		sign.setBackground(new Color(0, 120, 230));
+		sign.setForeground(Color.WHITE);
+		eql.setBackground(new Color(0, 120, 230));
 		eql.setForeground(Color.WHITE);
-		back.setBackground(new Color(255, 70, 50));
+		back.setBackground(new Color(230, 0, 50));
 		back.setForeground(Color.WHITE);
-		clr.setBackground(new Color(255, 70, 50));
+		clr.setBackground(new Color(230, 0, 50));
 		clr.setForeground(Color.WHITE);
+		a.setBackground(new Color(176, 224, 230));
 
 		ActionListener numAction = e -> {
 			JButton btn = (JButton) e.getSource();
@@ -161,13 +221,18 @@ public class Calculator {
 				result = num1[0] * num2;
 				break;
 			case "/":
-				if (num2 == 0) {
+				try {
+					result = num1[0] / num2;
+					if (Double.isInfinite(result) || Double.isNaN(result)) {
+						t1.setText("Error");
+						return;
+					}
+				} catch (Exception ex) {
 					t1.setText("Error");
 					return;
-				} else {
-					result = num1[0] / num2;
 				}
 				break;
+
 			}
 
 			if (result == Math.floor(result)) {
@@ -176,6 +241,9 @@ public class Calculator {
 				t1.setText(String.valueOf(result));
 			}
 		});
+
+		clr.addActionListener(e -> t1.setText(""));
+
 		back.addActionListener(e -> {
 			String text = t1.getText();
 			if (!text.isEmpty()) {
@@ -183,9 +251,9 @@ public class Calculator {
 			}
 		});
 
-		clr.addActionListener(e -> t1.setText(""));
-		frame.setVisible(true);
 		frame.getContentPane().setBackground(new Color(135, 206, 235));
+		frame.setVisible(true);
+
 	}
 
 }
