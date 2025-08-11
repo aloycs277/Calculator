@@ -5,11 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
-public class Calculator {
+public class Main {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Calculator");
-		frame.setSize(385, 500);
+		frame.setSize(385, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setLayout(null);
@@ -98,6 +98,22 @@ public class Calculator {
 		pi.setBounds(221, 400, 64, 40);
 		res.setBounds(288, 400, 64, 40);
 
+		sqrt.setVisible(false);
+		square.setVisible(false);
+		sin.setVisible(false);
+		cos.setVisible(false);
+		tan.setVisible(false);
+		log.setVisible(false);
+		ln.setVisible(false);
+		mod.setVisible(false);
+		pow.setVisible(false);
+		asin.setVisible(false);
+		acos.setVisible(false);
+		atan.setVisible(false);
+		pi.setVisible(false);
+		res.setVisible(false);
+		fact.setVisible(false);
+
 		frame.add(b1);
 		frame.add(b2);
 		frame.add(b3);
@@ -164,6 +180,33 @@ public class Calculator {
 		clr.setBackground(new Color(230, 0, 50));
 		clr.setForeground(Color.WHITE);
 		a.setBackground(new Color(176, 224, 230));
+
+		a.addActionListener(e -> {
+			boolean visible = sqrt.isVisible();
+			sqrt.setVisible(!visible);
+			square.setVisible(!visible);
+			sin.setVisible(!visible);
+			cos.setVisible(!visible);
+			tan.setVisible(!visible);
+			log.setVisible(!visible);
+			ln.setVisible(!visible);
+			mod.setVisible(!visible);
+			pow.setVisible(!visible);
+			asin.setVisible(!visible);
+			acos.setVisible(!visible);
+			atan.setVisible(!visible);
+			pi.setVisible(!visible);
+			res.setVisible(!visible);
+			fact.setVisible(!visible);
+			a.setText(visible ? "↑" : "↓");
+			if (!visible) {
+				frame.setSize(385, 500);
+			} else {
+
+				frame.setSize(385, 350);
+			}
+
+		});
 
 		ActionListener numAction = e -> {
 			JButton btn = (JButton) e.getSource();
@@ -232,7 +275,12 @@ public class Calculator {
 					return;
 				}
 				break;
-
+			case "%":
+				result = num1[0] % num2;
+				break;
+			case "^":
+				result = Math.pow(num1[0], num2);
+				break;
 			}
 
 			if (result == Math.floor(result)) {
@@ -248,6 +296,154 @@ public class Calculator {
 			String text = t1.getText();
 			if (!text.isEmpty()) {
 				t1.setText(text.substring(0, text.length() - 1));
+			}
+		});
+
+		sign.addActionListener(e -> {
+			try {
+				double value = Double.parseDouble(t1.getText());
+				if (value == Math.floor(value)) {
+					t1.setText(String.valueOf((long) (-value)));
+				} else {
+					t1.setText(String.valueOf(-value));
+				}
+			} catch (Exception ex) {
+			}
+		});
+
+		sqrt.addActionListener(e -> {
+			try {
+				double result = (Math.sqrt(Double.parseDouble(t1.getText())));
+				if (result == Math.floor(result)) {
+					t1.setText(String.valueOf((long) result));
+				} else {
+					t1.setText(String.valueOf(Math.sqrt(result)));
+				}
+
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		square.addActionListener(e -> {
+			try {
+				double result = Double.parseDouble(t1.getText()) * Double.parseDouble(t1.getText());
+				if (result == Math.floor(result)) {
+					t1.setText(String.valueOf((long) (result)));
+				} else {
+					t1.setText(String.valueOf(result));
+				}
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		log.addActionListener(e -> {
+			try {
+				t1.setText(String.valueOf(Math.log10(Double.parseDouble(t1.getText()))));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+		ln.addActionListener(e -> {
+			try {
+				t1.setText(String.valueOf(Math.log(Double.parseDouble(t1.getText()))));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		mod.addActionListener(e -> {
+			num1[0] = Double.parseDouble(t1.getText());
+			op[0] = "%";
+			t1.setText("");
+		});
+		pow.addActionListener(e -> {
+			num1[0] = Double.parseDouble(t1.getText());
+			op[0] = "^";
+			t1.setText("");
+		});
+		fact.addActionListener(e -> {
+			try {
+				int n = Integer.parseInt(t1.getText());
+				if (n < 0) {
+					t1.setText("Error");
+					return;
+				}
+				long factValue = 1;
+				for (long  i = 1; i <= n; i++) {
+					factValue *= i;
+				}
+				t1.setText(String.valueOf(factValue));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		sin.addActionListener(e -> {
+			try {
+				double value = Math.toRadians(Double.parseDouble(t1.getText()));
+				t1.setText(String.valueOf(Math.sin(value)));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+		cos.addActionListener(e -> {
+			try {
+				double value = Math.toRadians(Double.parseDouble(t1.getText()));
+				t1.setText(String.valueOf(Math.cos(value)));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+		tan.addActionListener(e -> {
+			try {
+				double value = Math.toRadians(Double.parseDouble(t1.getText()));
+				t1.setText(String.valueOf(Math.tan(value)));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		asin.addActionListener(e -> {
+			try {
+				double value = Double.parseDouble(t1.getText());
+				t1.setText(String.valueOf(Math.toDegrees(Math.asin(value))));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+		acos.addActionListener(e -> {
+			try {
+				double value = Double.parseDouble(t1.getText());
+				t1.setText(String.valueOf(Math.toDegrees(Math.acos(value))));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+		atan.addActionListener(e -> {
+			try {
+				double value = Double.parseDouble(t1.getText());
+				t1.setText(String.valueOf(Math.toDegrees(Math.atan(value))));
+			} catch (Exception ex) {
+				t1.setText("Error");
+			}
+		});
+
+		pi.addActionListener(e -> {
+			t1.setText(String.valueOf(Math.PI));
+		});
+
+		res.addActionListener(e -> {
+			try {
+				double value = Double.parseDouble(t1.getText());
+				if (value == 0) {
+					t1.setText("Error");
+				} else {
+					t1.setText(String.valueOf(1 / value));
+				}
+			} catch (Exception ex) {
+				t1.setText("Error");
 			}
 		});
 
