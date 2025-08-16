@@ -371,7 +371,7 @@ public class Main {
 					return;
 				}
 				long factValue = 1;
-				for (long  i = 1; i <= n; i++) {
+				for (long i = 1; i <= n; i++) {
 					factValue *= i;
 				}
 				t1.setText(String.valueOf(factValue));
@@ -383,7 +383,10 @@ public class Main {
 		sin.addActionListener(e -> {
 			try {
 				double value = Math.toRadians(Double.parseDouble(t1.getText()));
-				t1.setText(String.valueOf(Math.sin(value)));
+				double result = Math.sin(value);
+				if (Math.abs(result) < 1.0e-10)
+					result = 0;
+				t1.setText(String.valueOf(result));
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
@@ -391,15 +394,27 @@ public class Main {
 		cos.addActionListener(e -> {
 			try {
 				double value = Math.toRadians(Double.parseDouble(t1.getText()));
-				t1.setText(String.valueOf(Math.cos(value)));
+				double result = Math.cos(value);
+				if (Math.abs(result) < 1.0e-10)
+					result = 0;
+				t1.setText(String.valueOf(result));
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
 		});
 		tan.addActionListener(e -> {
 			try {
-				double value = Math.toRadians(Double.parseDouble(t1.getText()));
-				t1.setText(String.valueOf(Math.tan(value)));
+				double value = Double.parseDouble(t1.getText());
+				double result = Math.toRadians(value);
+				double co = Math.cos(result);
+				if (Math.abs(co) < 1.0e-10) {
+					t1.setText("Infinity");
+				} else {
+					double result_1 = Math.tan(result);
+					if (Math.abs(result_1) < 1.0e-10)
+						result_1 = 0;
+					t1.setText(String.valueOf(result_1));
+				}
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
@@ -408,7 +423,10 @@ public class Main {
 		asin.addActionListener(e -> {
 			try {
 				double value = Double.parseDouble(t1.getText());
-				t1.setText(String.valueOf(Math.toDegrees(Math.asin(value))));
+				double result = Math.toDegrees(Math.asin(value));
+				if (Math.abs(result) < 1.0e-10)
+					result = 0;
+				t1.setText(String.valueOf(result));
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
@@ -416,7 +434,10 @@ public class Main {
 		acos.addActionListener(e -> {
 			try {
 				double value = Double.parseDouble(t1.getText());
-				t1.setText(String.valueOf(Math.toDegrees(Math.acos(value))));
+				double result = Math.toDegrees(Math.acos(value));
+				if (Math.abs(result) < 1.0e-10)
+					result = 0;
+				t1.setText(String.valueOf(result));
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
@@ -424,7 +445,10 @@ public class Main {
 		atan.addActionListener(e -> {
 			try {
 				double value = Double.parseDouble(t1.getText());
-				t1.setText(String.valueOf(Math.toDegrees(Math.atan(value))));
+				double result = Math.toDegrees(Math.atan(value));
+				if (Math.abs(result) < 1.0e-10)
+					result = 0;
+				t1.setText(String.valueOf(result));
 			} catch (Exception ex) {
 				t1.setText("Error");
 			}
